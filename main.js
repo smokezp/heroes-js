@@ -1,15 +1,14 @@
-window.heroes = [];
+let heroes = [];
 
 function generateHero(newHeroName) {
   let container = $('#main-container');
-  let i = window.heroes.push({name: newHeroName});
+  let i = heroes.push({name: newHeroName});
   i--;
   let div = "<tr id='" + 'hero' + i + "'>" +
       "<td><div class='name'>" + newHeroName + "</div></td>" +
       "<td><button onClick='Edit(" + i + ")'>Редактировать</button></td>" +
       "<td><button onClick='Delete(" + i + ")'>Удалить</button></td>" +
       "</tr>";
-  console.log(div);
   $(container).append(div);
 
 }
@@ -17,7 +16,7 @@ function generateHero(newHeroName) {
 function Edit(i) {
   let container = $('#action-container');
   container.empty();
-  let hero = window.heroes[i];
+  let hero = heroes[i];
 
   let div = "<div id='hero-edit'>" +
       "<input class='hero-name' type='text' value='" + hero.name + "'>" +
@@ -48,7 +47,7 @@ function Create() {
 
 function Update(i) {
   let newHeroName = $('#hero-edit').find('.hero-name').val();
-  window.heroes[i].name = newHeroName;
+  heroes[i].name = newHeroName;
   $('#hero' + i).find('.name')[0].innerHTML = newHeroName;
   Hide('edit');
 }
@@ -58,14 +57,13 @@ function Hide(target) {
 }
 
 function Delete(i) {
-  delete window.heroes[i];
+  delete heroes[i];
   $('#hero' + i).remove();
-  console.log(window.heroes);
 }
 
 $(document).ready(function () {
 
-  let heroes = [
+  let defaultHeroes = [
     {
       "name": "dsfsdfsdf"
     }, {
@@ -73,8 +71,7 @@ $(document).ready(function () {
     }
   ];
 
-
-  heroes.map((hero, i) => {
+  defaultHeroes.map((hero, i) => {
     generateHero(hero.name);
   });
 });
