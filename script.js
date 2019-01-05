@@ -117,6 +117,8 @@ $(document).ready(function () {
 				</div>`);
       }
     });
+    // просто повесь листнер на копку onClick="getHero".
+    // зачем тут delegate? или просто заюзай .on('click'). Ведь у тебя же больше не добавиться кнопок
     $('body').delegate('button.btn-link', 'click', getHero);
   }
 
