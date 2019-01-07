@@ -74,4 +74,7 @@ $(document).ready(function () {
   defaultHeroes.map((hero, i) => {
     generateHero(hero.name);
   });
+
+  // document.getElementById();
+
 });
